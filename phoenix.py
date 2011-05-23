@@ -104,7 +104,7 @@ class CommandLineOptions(object):
         if not self.kernel:
             module = self.parsedSettings.kernel
             try:
-                file, filename, smt = imp.find_module(module, ['kernels'])
+                file, filename, smt = imp.find_module(module, ['/usr/share/phoenix-miner/kernels'])
             except ImportError:
                 print("Could not locate the specified kernel!")
                 exit()

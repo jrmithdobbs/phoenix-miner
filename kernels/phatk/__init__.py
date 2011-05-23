@@ -253,7 +253,11 @@ class MiningKernel(object):
         m.update(device.name)
         m.update(self.defines)
         m.update(kernel)
-        cacheName = '%s.elf' % m.hexdigest()
+	mytmpdir = os.getenv("TMPDIR")
+	if mytmpdir is not None:
+		cacheName = '%s/%s.elf' % mytmpdir, m.hexdigest()
+	else:
+		cacheName = '/tmp/%s.elf' % m.hexdigest()
         
         fileName = os.path.join(kernelFileDir, cacheName)
         
