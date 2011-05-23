@@ -116,7 +116,6 @@ class ConsoleLogger(object):
     def say(self, message, newLine=False, hideTimestamp=False):
         #add new line if requested
         if newLine:
-            message += '\n'
             if hideTimestamp:
                 timestamp = ''
             else:
@@ -125,12 +124,13 @@ class ConsoleLogger(object):
             message = timestamp + message
         
         #erase the previous line
-        if self.lineLength > 0:
-            sys.stdout.write('\b \b' * self.lineLength)
-            sys.stdout.write(' ' * self.lineLength)
-            sys.stdout.write('\b \b' * self.lineLength)
+        #if self.lineLength > 0:
+        #    sys.stdout.write('\b \b' * self.lineLength)
+        #    sys.stdout.write(' ' * self.lineLength)
+        #    sys.stdout.write('\b \b' * self.lineLength)
 
         #print the line
+	message += "\n"
         sys.stdout.write(message)
         sys.stdout.flush()
         
@@ -140,7 +140,7 @@ class ConsoleLogger(object):
         else:
             self.lineLength = len(message)
 
-    def log(self, message, update=True, hideTimestamp=False):
+    def log(self, message, update=True, hideTimestamp=True):
         self.say(message, True, hideTimestamp)
         if update:
             self.updateStatus(True)
