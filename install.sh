@@ -3,16 +3,19 @@
 if [ -z "$1" ]; then
   echo "Please provide python major version on commandline."
   echo "Eg: ./install.sh 2.6"
+  exit 1
 fi
 
 PYVER="$1"
 
 # Install kernels
-mkdir -p /usr/share/phoenix-miner/kernels/phatk /usr/share/phoneix-miner/kernels/poclbm
+mkdir -p /usr/share/phoenix-miner/kernels/phatk /usr/share/phoenix-miner/kernels/poclbm
 install -m0644 ./kernels/phatk/__init__.py /usr/share/phoenix-miner/kernels/phatk/
 install -m0664 ./kernels/phatk/BFIPatcher.py /usr/share/phoenix-miner/kernels/phatk/
+install -m0664 ./kernels/phatk/kernel.cl /usr/share/phoenix-miner/kernels/phatk/
 install -m0664 ./kernels/poclbm/__init__.py /usr/share/phoenix-miner/kernels/poclbm/
 install -m0664 ./kernels/poclbm/BFIPatcher.py /usr/share/phoenix-miner/kernels/poclbm/
+install -m0664 ./kernels/phatk/kernel.cl /usr/share/phoenix-miner/kernels/poclbm/
 
 
 # Install minerutil support classes
