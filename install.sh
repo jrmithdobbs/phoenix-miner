@@ -41,3 +41,5 @@ ln -s /usr/lib/python${PYVER}/phoenix.py /usr/bin/phoenix
 
 # Build .pyc cache for system with newly installed files.
 python /usr/lib/python${PYVER}/compileall.py /usr/lib/python${PYVER}/
+python /usr/lib/python${PYVER}/copilealll.py /usr/share/phoenix-miner/kernels/phatk
+python /usr/lib/python${PYVER}/copilealll.py /usr/share/phoenix-miner/kernels/poclbm
